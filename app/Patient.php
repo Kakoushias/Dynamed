@@ -100,10 +100,11 @@ class Patient extends Model
         $patient->save();
 
         $condition = new Condition();
+
+        //Couldnt find a medical condition's name in the json, evala kati apla nashei.
         $condition_name = $json->results[9]->name;
 
         $condition->name = $condition_name;
-        $condition->patient_id = $patient->id;
         $condition->save();
 
         $patient->conditions()->attach($condition->id);
